@@ -18,9 +18,15 @@ export const createProduct = async (req, res) => {
   const product = req.body;
 
   if (!product.name || !product.price || !product.image) {
-    res
+    return res
       .status(400)
       .json({ success: false, message: "PLease complete all fields" });
+  }
+
+  if (isNaN(Number(product.price))) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Price must be a number" });
   }
 
   try {
@@ -36,7 +42,9 @@ export const deleteProduct = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(404).json({ success: false, message: "Invalid product Id" });
+    return res
+      .status(404)
+      .json({ success: false, message: "Invalid product Id" });
   }
 
   try {
@@ -54,7 +62,9 @@ export const updateProduct = async (req, res) => {
   const product = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(404).json({ success: false, message: "Invalid product Id" });
+    return res
+      .status(404)
+      .json({ success: false, message: "Invalid product Id" });
   }
 
   try {
