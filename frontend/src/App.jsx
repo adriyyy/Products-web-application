@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import CreatePage from "./pages/CreatePage";
-import HomePage from "./pages/Homepage";
+import HomePage from "./pages/HomePage";
 import MainLayout from "./layouts/MainLayout";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
