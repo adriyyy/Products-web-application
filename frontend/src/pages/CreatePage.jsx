@@ -30,6 +30,7 @@ const CreatePage = () => {
         description: message,
         status: "error",
         isClosable: true,
+        duration: 5000,
       });
     } else {
       toast({
@@ -37,14 +38,15 @@ const CreatePage = () => {
         description: message,
         status: "success",
         isClosable: true,
+        duration: 5000,
+      });
+
+      setNewProduct({
+        name: "",
+        price: "",
+        image: "",
       });
     }
-
-    setNewProduct({
-      name: "",
-      price: "",
-      image: "",
-    });
   };
 
   return (
@@ -77,7 +79,7 @@ const CreatePage = () => {
               }
             />
             <Input
-              placeholder="Product Image"
+              placeholder="Image URL"
               name="image"
               value={newProduct.image}
               onChange={(e) =>
